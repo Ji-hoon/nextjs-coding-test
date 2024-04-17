@@ -1,10 +1,29 @@
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
-      <header>헤더 (client component)</header>
+import Link from "next/link";
+import Button from "../components/atoms/Button";
+import Inputfield from "../components/atoms/Inputfield";
+import { LABELS, META, TYPES } from "../global/constants";
 
-      <div>콘텐츠 영역 (server + client component)</div>
-      <footer>푸터 (client component)</footer>
-    </main>
+export default function RootPage() {
+  return (
+    <div className="w-full flex flex-col items-center justify-center gap-12 pb-10">
+      <h1 className="max-w-md text-3xl font-bold text-center break-keep">
+        {META.DESC}
+      </h1>
+      <div className="w-[320px] flex flex-col gap-4">
+        <Inputfield
+          name="teamName"
+          type="text"
+          placeholder="팀 명을 입력해주세요."
+        />
+        <Inputfield
+          name="memberName"
+          type="text"
+          placeholder="이름을 입력해주세요."
+        />
+        <Link href="/questions/1" className="w-full mt-8">
+          <Button type={TYPES.PRIMARY} label={LABELS.START_SURVEY} size={320} />
+        </Link>
+      </div>
+    </div>
   );
 }

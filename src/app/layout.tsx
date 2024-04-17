@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Header from "../components/modules/Header";
+import Footer from "../components/modules/Footer";
+import { META } from "../global/constants";
 
 export const metadata: Metadata = {
-  title: "설문조사 서비스",
-  description: "운동에 관한 설문에 응답하시고 본인의 신체 점수를 측정해보세요.",
+  title: META.TITLE,
+  description: META.DESC,
 };
 
 export default function RootLayout({
@@ -13,7 +16,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="flex flex-col min-h-screen ">
+        <Header />
+        <form className="flex h-full flex-col flex-auto items-center justify-center">
+          {children}
+          <Footer />
+        </form>
+      </body>
     </html>
   );
 }
