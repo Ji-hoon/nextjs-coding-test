@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Header from "../components/modules/Header";
-import Footer from "../components/modules/Footer";
 import { META } from "../global/constants";
 import SurveyProvider from "../store";
 
@@ -22,7 +21,6 @@ export default function RootLayout({
           <Header />
           <div className="flex h-full flex-col flex-auto items-center justify-center">
             {children}
-            <Footer />
           </div>
         </SurveyProvider>
       </body>
