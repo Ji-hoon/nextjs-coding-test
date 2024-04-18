@@ -33,6 +33,10 @@ export const TITLES = {
   QUESTIONS: "다음 질문에 답변해주세요.",
 };
 
+export const MESSAGES = {
+  MISSING_FIELD: "필드를 모두 입력해주세요.",
+};
+
 export const META = {
   TITLE: "설문조사 서비스",
   DESC: "🏃운동에 관한 설문에 응답하시고 본인의 신체 점수를 측정해보세요.",
