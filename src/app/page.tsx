@@ -21,7 +21,12 @@ export default function RootPage() {
           placeholder="이름을 입력해주세요."
         />
         <Link href="/questions/1" className="w-full mt-8">
-          <Button type={TYPES.PRIMARY} label={LABELS.START_SURVEY} size={320} />
+          <Button
+            type={TYPES.SUBMIT}
+            style={TYPES.PRIMARY_STYLE}
+            label={LABELS.START_SURVEY}
+            size={320}
+          />
         </Link>
       </div>
     </div>

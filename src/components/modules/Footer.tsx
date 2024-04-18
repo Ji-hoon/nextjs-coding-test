@@ -15,13 +15,25 @@ export default function Footer() {
         <footer className="w-full border-t border-slate-200 p-4 flex items-center">
           {/* /question/1이 아닐 때만 이전 버튼 노출 */}
           {params.id !== "1" && (
-            <Button type={TYPES.NORMAL} label={LABELS.GO_BACK} />
+            <Button
+              type={TYPES.LINK}
+              style={TYPES.NORMAL_STYLE}
+              label={LABELS.GO_BACK}
+            />
           )}
           <div className="flex-auto text-center"></div>
           {(params.id as string) === String(questions.length) ? (
-            <Button type={TYPES.SUBMIT} label={LABELS.CONFIRM} />
+            <Button
+              type={TYPES.SUBMIT}
+              style={TYPES.PRIMARY_STYLE}
+              label={LABELS.CONFIRM}
+            />
           ) : (
-            <Button type={TYPES.PRIMARY} label={LABELS.GO_NEXT} />
+            <Button
+              type={TYPES.SUBMIT}
+              style={TYPES.PRIMARY_STYLE}
+              label={LABELS.GO_NEXT}
+            />
           )}
         </footer>
       )}

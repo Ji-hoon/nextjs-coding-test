@@ -5,8 +5,9 @@ export const QUESTION_TYPES = {
 };
 
 export const TYPES = {
-  PRIMARY: "PRIMARY",
-  NORMAL: "NORMAL",
+  PRIMARY_STYLE: "PRIMARY",
+  NORMAL_STYLE: "NORMAL",
+  LINK: "LINK",
   SUBMIT: "SUBMIT",
 };
 
