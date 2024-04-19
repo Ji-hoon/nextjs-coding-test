@@ -14,6 +14,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { surveyActions } from "@/src/store/survey.slice";
 import RadioButton from "@/src/components/atoms/Radiobutton";
 import Inputfield from "@/src/components/atoms/Inputfield";
+import { QUESTION_TYPES } from "@/src/global/constants";
+import Radiobutton from "@/src/components/atoms/Radiobutton";
+import Checkbox from "@/src/components/atoms/Checkbox";
 
 export default function Contents({
   data,
@@ -28,7 +31,6 @@ export default function Contents({
   const { isRegistered } = useSelector((state: storeProps) => state.survey);
   if (!isRegistered) redirect("/");
 
-  // TODO: RegisterFormValues가 아닌 각 스텝마다 다른 타입으로 변경 필요
   const { register, handleSubmit } = useForm<FormValues>();
   const dispatch = useDispatch();
   const router = useRouter();
@@ -46,11 +48,25 @@ export default function Contents({
         {data &&
           data.options &&
           data.options.map((option, index) => {
-            if (data.type === "RADIO") {
-              return <div key={index}>{option}</div>;
+            if (data.type === QUESTION_TYPES.TYPE_A) {
+              return (
+                <Radiobutton
+                  key={index}
+                  name={data.name as RegisterFormFieldType}
+                  label={option}
+                  register={register}
+                />
+              );
             }
-            if (data.type === "CHECKBOX") {
-              return <div key={index}>{option}</div>;
+            if (data.type === QUESTION_TYPES.TYPE_C) {
+              return (
+                <Checkbox
+                  key={index}
+                  name={data.name as RegisterFormFieldType}
+                  label={option}
+                  register={register}
+                />
+              );
             }
           })}
         {data && data.ranges && (
