@@ -11,3 +11,10 @@ export type RegisterFormValues = {
 };
 
 export type RegisterFormFieldType = "teamName" | "memberName";
+
+export type QuestionContentType = {
+  type: string;
+  title: string;
+  options?: string[];
+  ranges?: number[];
+};

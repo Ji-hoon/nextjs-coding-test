@@ -1,19 +1,17 @@
-"use client";
+import Contents from "./contents";
 
-import Footer from "@/src/components/modules/Footer";
-import { storeProps } from "@/src/global/types";
-import { useSelector } from "react-redux";
-
-export default function Question({ params }: any) {
-  const { isRegistered } = useSelector((state: storeProps) => state.survey);
-  console.log(isRegistered);
+export default async function Questions({ params }: any) {
+  const response = await fetch(
+    `${process.env.BASE_URL}/api/questions/${params.id as string}`
+  );
+  const data = await response.json();
 
   return (
-    <form className="w-full h-full flex flex-col flex-auto ">
-      <div className="flex-auto">
-        <h2>{params.id}</h2>
-      </div>
-      <Footer />
-    </form>
+    <div className="w-full h-full flex flex-col flex-auto px-10 py-12">
+      <h2 className="text-3xl font-semibold break-keep">
+        Q{params.id}. {data.data.title}
+      </h2>
+      <Contents data={data.data} />
+    </div>
   );
 }
