@@ -9,11 +9,11 @@ import { useEffect, useState } from "react";
 export default function DashboardContent() {
   const dispatch = useDispatch();
   const [isSaved, setIsSaved] = useState(false);
-  const { registeredUserInfo } = useSelector(
+  const { isRegistered, registeredUserInfo } = useSelector(
     (state: storeProps) => state.survey
   );
 
-  if (!isSaved) {
+  if (!isSaved && isRegistered) {
     //로컬 스토리지에 결과값 저장
     setIsSaved(true);
     setLocalstorageWithUserInfo(registeredUserInfo);
