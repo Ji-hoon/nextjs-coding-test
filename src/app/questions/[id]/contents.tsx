@@ -1,6 +1,6 @@
 "use client";
 
-import Footer from "@/src/components/modules/Footer";
+import Navigation_Control from "@/src/components/modules/Navigation.control";
 import {
   QuestionContentType,
   RegisterFormValues,
@@ -49,7 +49,7 @@ export default function Contents({
           <>{/* <Input /> */}</>
         )}
       </div>
-      <Footer length={length} page={parseInt(page)} />
+      <Navigation_Control length={length} page={parseInt(page)} />
     </form>
   );
 }

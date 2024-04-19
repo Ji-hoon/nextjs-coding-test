@@ -4,7 +4,7 @@ import { LABELS, TYPES } from "@/src/global/constants";
 import Button from "../atoms/Button";
 import { getPage } from "@/src/utils/handlePage";
 
-export default function Footer({
+export default function Navigation_Control({
   page,
   length,
 }: {
