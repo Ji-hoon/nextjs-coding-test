@@ -13,7 +13,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { surveyActions } from "@/src/store/survey.slice";
 import RadioButton from "@/src/components/atoms/Radiobutton";
 
-export default function Contents({ data }: { data: QuestionContentType }) {
+export default function Contents({
+  data,
+  length,
+  page,
+}: {
+  data: QuestionContentType;
+  length: number;
+  page: string;
+}) {
   // NOTE: 등록된 정보가 없다면 root로 리다이렉트
   const { isRegistered } = useSelector((state: storeProps) => state.survey);
   if (!isRegistered) redirect("/");
@@ -41,7 +49,7 @@ export default function Contents({ data }: { data: QuestionContentType }) {
           <>{/* <Input /> */}</>
         )}
       </div>
-      <Footer />
+      <Footer length={length} page={parseInt(page)} />
     </form>
   );
 }
