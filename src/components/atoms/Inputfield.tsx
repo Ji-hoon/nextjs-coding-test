@@ -1,6 +1,6 @@
 "use client";
 
-import { RegisterFormFieldType, RegisterFormValues } from "@/src/global/types";
+import { FormValues, RegisterFormFieldType } from "@/src/global/types";
 import { UseFormRegister } from "react-hook-form";
 
 export default function Inputfield({
@@ -9,13 +9,18 @@ export default function Inputfield({
   placeholder,
   defaultValue,
   register,
+  min,
+  max,
 }: {
   name: RegisterFormFieldType;
   type: string;
-  placeholder: string;
+  placeholder?: string;
   defaultValue?: string;
-  register: UseFormRegister<RegisterFormValues>;
+  register: UseFormRegister<FormValues>;
+  min?: number;
+  max?: number;
 }) {
+  console.log(name, type);
   return (
     <input
       {...register(name)}
@@ -24,6 +29,8 @@ export default function Inputfield({
       name={name}
       placeholder={placeholder}
       defaultValue={defaultValue}
+      min={min}
+      max={max}
     />
   );
 }

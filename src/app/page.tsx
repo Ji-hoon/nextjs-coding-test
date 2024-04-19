@@ -7,7 +7,7 @@ import Button from "../components/atoms/Button";
 import Inputfield from "../components/atoms/Inputfield";
 import { LABELS, MESSAGES, META, TYPES } from "../global/constants";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { RegisterFormValues, storeProps } from "../global/types";
+import { FormValues, storeProps } from "../global/types";
 import { useRouter } from "next/navigation";
 
 export default function RootPage() {
@@ -15,11 +15,11 @@ export default function RootPage() {
     (state: storeProps) => state.survey
   );
 
-  const { register, handleSubmit } = useForm<RegisterFormValues>();
+  const { register, handleSubmit } = useForm<FormValues>();
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const onSubmit: SubmitHandler<RegisterFormValues> = (data) => {
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
     console.log(data); // TODO : 개발 완료 후 삭제
 
     if (!data.memberName || !data.teamName) {

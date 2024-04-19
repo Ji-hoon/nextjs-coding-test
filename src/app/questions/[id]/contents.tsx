@@ -3,7 +3,8 @@
 import Navigation_Control from "@/src/components/modules/Navigation.control";
 import {
   QuestionContentType,
-  RegisterFormValues,
+  RegisterFormFieldType,
+  FormValues,
   storeProps,
 } from "@/src/global/types";
 import { redirect, useRouter } from "next/navigation";
@@ -12,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { surveyActions } from "@/src/store/survey.slice";
 import RadioButton from "@/src/components/atoms/Radiobutton";
+import Inputfield from "@/src/components/atoms/Inputfield";
 
 export default function Contents({
   data,
@@ -27,11 +29,11 @@ export default function Contents({
   if (!isRegistered) redirect("/");
 
   // TODO: RegisterFormValues가 아닌 각 스텝마다 다른 타입으로 변경 필요
-  const { register, handleSubmit } = useForm<RegisterFormValues>();
+  const { register, handleSubmit } = useForm<FormValues>();
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const onSubmit: SubmitHandler<RegisterFormValues> = (data) => {
+  const onSubmit: SubmitHandler<FormValues> = (data) => {
     router.replace("/dashboard"); // TODO : 추후 상태 업데이트 코드 추가
   };
 
@@ -40,13 +42,28 @@ export default function Contents({
       onSubmit={handleSubmit(onSubmit)}
       className="w-full h-full flex flex-col flex-auto"
     >
-      <div className="flex-auto">
-        {data.type === "RADIO" ? (
-          <>{/* <RadioButton /> */}</>
-        ) : data.type === "CHECKBOX" ? (
-          <>{/* <Checkbox /> */}</>
-        ) : (
-          <>{/* <Input /> */}</>
+      <div className="flex-auto py-8 w-[320px]">
+        {data &&
+          data.options &&
+          data.options.map((option, index) => {
+            if (data.type === "RADIO") {
+              return <div key={index}>{option}</div>;
+            }
+            if (data.type === "CHECKBOX") {
+              return <div key={index}>{option}</div>;
+            }
+          })}
+        {data && data.ranges && (
+          <div className="flex items-center w-[100px] gap-2">
+            <Inputfield
+              register={register}
+              name={data?.name as RegisterFormFieldType}
+              type="number"
+              min={data.ranges[0]}
+              max={data.ranges[1]}
+            />
+            <span>분</span>
+          </div>
         )}
       </div>
       <Navigation_Control length={length} page={parseInt(page)} />
