@@ -25,7 +25,7 @@ export default function Radiobutton({
         value={index}
         defaultChecked={parseInt(defaultValue as string) === index}
       />
-      <label htmlFor={label} className="">
+      <label htmlFor={label} className="flex-auto">
         {label}
       </label>
     </div>

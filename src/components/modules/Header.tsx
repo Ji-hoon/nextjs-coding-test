@@ -28,7 +28,7 @@ export default function Header() {
                 <span className="text-sky-500">{username}</span>님,{" "}
               </>
             )}
-            TITLES.QUESTIONS
+            {TITLES.QUESTIONS}
           </>
         )}
       </h1>
