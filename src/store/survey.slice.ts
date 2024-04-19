@@ -1,11 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialSurveyState = {
-  isRegistered: false,
+  isRegistered: false, // boolean
   registeredUserInfo: {
-    teamName: String,
-    memberName: String,
+    teamName: undefined, // string
+    memberName: undefined, // string
   },
+  answers: [], // e.g. {id: params.id, value: number }, ...
+  result: undefined, // number
 };
 
 const surveySlice = createSlice({
@@ -18,6 +20,13 @@ const surveySlice = createSlice({
       state.registeredUserInfo = {
         teamName,
         memberName,
+      };
+    },
+    resetUserInfo(state) {
+      state.isRegistered = false;
+      state.registeredUserInfo = {
+        teamName: undefined,
+        memberName: undefined,
       };
     },
   },

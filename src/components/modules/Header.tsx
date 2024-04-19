@@ -22,7 +22,7 @@ export default function Header() {
           TITLES.DASHBOARD
         ) : (
           <>
-            <span className="text-sky-500">{username}</span>님,
+            <span className="text-sky-500">{username}</span>님,{" "}
             {TITLES.QUESTIONS}
           </>
         )}

@@ -33,9 +33,9 @@ export default function Contents({ data }: { data: QuestionContentType }) {
       className="w-full h-full flex flex-col flex-auto"
     >
       <div className="flex-auto">
-        {data?.type === "RADIO" ? (
+        {data.type === "RADIO" ? (
           <>{/* <RadioButton /> */}</>
-        ) : data?.type === "CHECKBOX" ? (
+        ) : data.type === "CHECKBOX" ? (
           <>{/* <Checkbox /> */}</>
         ) : (
           <>{/* <Input /> */}</>
