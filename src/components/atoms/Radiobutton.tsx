@@ -6,11 +6,13 @@ export default function Radiobutton({
   label,
   register,
   index,
+  defaultValue,
 }: {
   name: RegisterFormFieldType;
   label: string;
   register: UseFormRegister<FormValues>;
   index: number;
+  defaultValue: string | string[] | undefined;
 }) {
   return (
     <div className="flex gap-2 items-center py-1">
@@ -21,6 +23,7 @@ export default function Radiobutton({
         className="form-radio"
         id={label}
         value={index}
+        defaultChecked={parseInt(defaultValue as string) === index}
       />
       <label htmlFor={label} className="">
         {label}

@@ -31,10 +31,9 @@ export default function Navigation_Control({
         />
       ) : (
         <Button
-          type={TYPES.LINK}
+          type={TYPES.SUBMIT}
           style={TYPES.PRIMARY_STYLE}
           label={LABELS.GO_NEXT}
-          link={getPage("NEXT", page)}
         />
       )}
     </footer>

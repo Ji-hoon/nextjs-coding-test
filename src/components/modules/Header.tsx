@@ -8,7 +8,8 @@ import { storeProps } from "@/src/global/types";
 
 export default function Header() {
   const pathname = usePathname();
-  const { registeredUserInfo } = useSelector(
+
+  const { isRegistered, registeredUserInfo } = useSelector(
     (state: storeProps) => state.survey
   );
   const username = registeredUserInfo.memberName;
@@ -22,11 +23,16 @@ export default function Header() {
           TITLES.DASHBOARD
         ) : (
           <>
-            <span className="text-sky-500">{username}</span>님,{" "}
-            {TITLES.QUESTIONS}
+            {isRegistered && (
+              <>
+                <span className="text-sky-500">{username}</span>님,{" "}
+              </>
+            )}
+            TITLES.QUESTIONS
           </>
         )}
       </h1>
+
       <div className="flex-auto text-center h-12"></div>
       {/* / 경로일 때 버튼 노출 (/dashboard 경로일 때 미노출) */}
       {pathname === PATHS.ROOT && (

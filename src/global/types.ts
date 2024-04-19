@@ -2,12 +2,14 @@ export type storeProps = {
   survey: {
     isRegistered: boolean;
     registeredUserInfo: RegisterFormValues;
+    answers: [AnswerProps];
   };
 };
 
 export type RegisterFormValues = {
   teamName: string;
   memberName: string;
+  result: number;
 };
 
 export type FormValues = {
@@ -31,4 +33,9 @@ export type QuestionContentType = {
   name: string;
   options?: string[];
   ranges?: number[];
+};
+
+export type AnswerProps = {
+  id: string;
+  value: string[];
 };
