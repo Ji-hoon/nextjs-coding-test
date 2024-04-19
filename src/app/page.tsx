@@ -20,8 +20,6 @@ export default function RootPage() {
   const router = useRouter();
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
-    console.log(data); // TODO : 개발 완료 후 삭제
-
     if (!data.memberName || !data.teamName) {
       // TODO: data 밸리데이션 추후 공통 유틸 함수로 분리
       alert(MESSAGES.MISSING_FIELD);
