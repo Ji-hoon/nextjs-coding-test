@@ -35,6 +35,7 @@ export const TITLES = {
 
 export const MESSAGES = {
   MISSING_FIELD: "필드를 모두 입력해주세요.",
+  EMPTY_VALUES: "옵션을 선택 또는 입력해주세요.",
 };
 
 export const META = {

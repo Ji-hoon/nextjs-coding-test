@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { surveyActions } from "@/src/store/survey.slice";
 import Inputfield from "@/src/components/atoms/Inputfield";
-import { QUESTION_TYPES } from "@/src/global/constants";
+import { MESSAGES, QUESTION_TYPES } from "@/src/global/constants";
 import Radiobutton from "@/src/components/atoms/Radiobutton";
 import Checkbox from "@/src/components/atoms/Checkbox";
 import { getPage } from "@/src/utils/handlePage";
@@ -46,6 +46,11 @@ export default function Contents({
 
   const onSubmit: SubmitHandler<FormValues> = (formData) => {
     const values = Object.values(formData) as Array<string>;
+
+    if (values[0] === null || values[0] === "" || !values[0]) {
+      alert(MESSAGES.EMPTY_VALUES);
+      return;
+    }
 
     dispatch(
       surveyActions.updateAnswers({
