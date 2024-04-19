@@ -55,6 +55,7 @@ export default function Contents({
                   name={data.name as RegisterFormFieldType}
                   label={option}
                   register={register}
+                  index={index}
                 />
               );
             }
@@ -65,6 +66,7 @@ export default function Contents({
                   name={data.name as RegisterFormFieldType}
                   label={option}
                   register={register}
+                  index={index}
                 />
               );
             }

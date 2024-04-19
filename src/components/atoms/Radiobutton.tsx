@@ -5,10 +5,12 @@ export default function Radiobutton({
   name,
   label,
   register,
+  index,
 }: {
   name: RegisterFormFieldType;
   label: string;
   register: UseFormRegister<FormValues>;
+  index: number;
 }) {
   return (
     <div className="flex gap-2 items-center py-1">
@@ -17,8 +19,8 @@ export default function Radiobutton({
         name={name}
         type="radio"
         className="form-radio"
-        defaultChecked={label === "1회"}
         id={label}
+        value={index}
       />
       <label htmlFor={label} className="">
         {label}
