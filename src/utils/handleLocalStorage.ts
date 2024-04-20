@@ -11,3 +11,9 @@ export function setLocalstorageWithUserInfo(data: RegisterFormValues) {
   newData.push(data);
   localStorage.setItem("surveyData", JSON.stringify(newData));
 }
+
+export function getLocalStorageData() {
+  const currentStorageData = localStorage.getItem("surveyData");
+  const currentData = JSON.parse(currentStorageData as string);
+  return currentData;
+}

@@ -5,6 +5,7 @@ import Button from "../atoms/Button";
 import { usePathname } from "next/navigation";
 import { useSelector } from "react-redux";
 import { storeProps } from "@/src/global/types";
+import { getLocalStorageData } from "@/src/utils/handleLocalStorage";
 
 export default function Header() {
   const pathname = usePathname();
@@ -14,11 +15,10 @@ export default function Header() {
   );
   const username = registeredUserInfo.memberName;
 
-  const currentStorageData = localStorage.getItem("surveyData");
-  const currentData = JSON.parse(currentStorageData as string);
+  const currentData = getLocalStorageData();
 
   return (
-    <header className="sticky top-0 backdrop-blur bg-white/95 supports-backdrop-blur:bg-white/95 border-b border-slate-200 flex items-center p-4 w-full h-[81px]">
+    <header className="sticky top-0 z-10 backdrop-blur bg-white/95 supports-backdrop-blur:bg-white/95 border-b border-slate-200 flex items-center p-4 w-full h-[81px]">
       <h3 className="text-xl font-bold px-2">
         {pathname === PATHS.ROOT ? (
           TITLES.ROOT

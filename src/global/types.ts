@@ -39,3 +39,10 @@ export type AnswerProps = {
   id: string;
   value: string[];
 };
+
+export type DataPropsType = {
+  teamName: string;
+  SUM?: number;
+  AVG?: number;
+  SD?: number;
+};

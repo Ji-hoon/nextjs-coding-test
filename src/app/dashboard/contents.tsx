@@ -1,15 +1,21 @@
 "use client";
 
-import { setLocalstorageWithUserInfo } from "@/src/utils/handleLocalStorage";
-import { useDispatch, useSelector } from "react-redux";
-import { surveyActions } from "@/src/store/survey.slice";
-import { storeProps } from "@/src/global/types";
-import { useEffect, useState } from "react";
+import {
+  getLocalStorageData,
+  setLocalstorageWithUserInfo,
+} from "@/src/utils/handleLocalStorage";
+import { useSelector } from "react-redux";
+import { RegisterFormValues, storeProps } from "@/src/global/types";
+import { useState } from "react";
 import Chart from "@/src/components/atoms/Chart";
-import { LABELS, MESSAGES } from "@/src/global/constants";
+import { COLORS, LABELS, MESSAGES } from "@/src/global/constants";
+import {
+  calcAverageData,
+  calcStandardDeviationData,
+  calcSumData,
+} from "@/src/utils/handleResultData";
 
 export default function DashboardContent() {
-  const dispatch = useDispatch();
   const [isSaved, setIsSaved] = useState(false);
   const { isRegistered, registeredUserInfo } = useSelector(
     (state: storeProps) => state.survey
@@ -21,13 +27,21 @@ export default function DashboardContent() {
     setLocalstorageWithUserInfo(registeredUserInfo);
   }
 
+  const localData = getLocalStorageData() as RegisterFormValues[];
+  const sumData = calcSumData(localData);
+  const avgData = calcAverageData(localData);
+  const stdData = calcStandardDeviationData(localData);
+
   return (
     <>
       {isRegistered && (
         <>
           <h2 className="text-3xl font-semibold break-keep">
-            {registeredUserInfo.memberName}님의 신체점수는{" "}
-            <span className="text-sky-500">{registeredUserInfo.result}점</span>{" "}
+            [{registeredUserInfo.teamName}팀] {registeredUserInfo.memberName}
+            님의 신체점수는{" "}
+            <span className="text-sky-500">
+              {registeredUserInfo.result}점
+            </span>{" "}
             입니다.
             <br />
             {registeredUserInfo.result >= 15 ? (
@@ -42,9 +56,17 @@ export default function DashboardContent() {
         </>
       )}
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        <Chart title={LABELS.CHART_TOTAL} />
-        <Chart title={LABELS.CHART_AVERAGE} />
-        <Chart title={LABELS.CHART_STANDARD} />
+        <Chart title={LABELS.CHART_TOTAL} data={sumData} color={COLORS.GREEN} />
+        <Chart
+          title={LABELS.CHART_AVERAGE}
+          data={avgData}
+          color={COLORS.BLUE}
+        />
+        <Chart
+          title={LABELS.CHART_STANDARD}
+          data={stdData}
+          color={COLORS.PINK}
+        />
       </div>
     </>
   );
