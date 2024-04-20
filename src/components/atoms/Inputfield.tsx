@@ -11,6 +11,7 @@ export default function Inputfield({
   register,
   min,
   max,
+  autoFocus,
 }: {
   name: RegisterFormFieldType;
   type: string;
@@ -19,6 +20,7 @@ export default function Inputfield({
   register: UseFormRegister<FormValues>;
   min?: number;
   max?: number;
+  autoFocus?: boolean;
 }) {
   return (
     <input
@@ -30,7 +32,7 @@ export default function Inputfield({
       defaultValue={defaultValue}
       min={min}
       max={max}
-      autoFocus
+      autoFocus={autoFocus}
     />
   );
 }

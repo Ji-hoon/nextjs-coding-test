@@ -19,10 +19,5 @@ export default function DashboardContent() {
     setLocalstorageWithUserInfo(registeredUserInfo);
   }
 
-  useEffect(() => {
-    dispatch(surveyActions.resetUserInfo());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   return <>대시보드</>;
 }

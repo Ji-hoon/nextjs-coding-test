@@ -109,6 +109,7 @@ export default function Contents({
               min={data.ranges[0]}
               max={data.ranges[1]}
               defaultValue={defaultValue?.value}
+              autoFocus={true}
             />
             <span>분</span>
           </div>

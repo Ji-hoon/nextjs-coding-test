@@ -9,15 +9,21 @@ import { LABELS, MESSAGES, META, TYPES } from "../global/constants";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FormValues, storeProps } from "../global/types";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function RootPage() {
-  const { registeredUserInfo } = useSelector(
+  const { isRegistered, registeredUserInfo } = useSelector(
     (state: storeProps) => state.survey
   );
 
   const { register, handleSubmit } = useForm<FormValues>();
   const dispatch = useDispatch();
   const router = useRouter();
+
+  useEffect(() => {
+    dispatch(surveyActions.resetUserInfo());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     if (!data.memberName || !data.teamName) {
@@ -44,14 +50,13 @@ export default function RootPage() {
           name="teamName"
           type="text"
           placeholder="팀 명을 입력해주세요."
-          defaultValue={registeredUserInfo?.teamName}
+          autoFocus={true}
         />
         <Inputfield
           register={register}
           name="memberName"
           type="text"
           placeholder="이름을 입력해주세요."
-          defaultValue={registeredUserInfo?.memberName}
         />
         <div className="w-full mt-8"></div>
         <Button
