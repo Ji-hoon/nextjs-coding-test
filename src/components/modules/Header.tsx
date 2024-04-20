@@ -19,7 +19,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 backdrop-blur bg-white/95 supports-backdrop-blur:bg-white/95 border-b border-slate-200 flex items-center p-4 w-full h-[81px]">
-      <h1 className="text-xl font-bold px-2">
+      <h3 className="text-xl font-bold px-2">
         {pathname === PATHS.ROOT ? (
           TITLES.ROOT
         ) : pathname.includes(PATHS.DASHBOARD) ? (
@@ -34,7 +34,7 @@ export default function Header() {
             {TITLES.QUESTIONS}
           </>
         )}
-      </h1>
+      </h3>
 
       <div className="flex-auto text-center h-12"></div>
       {/* / 경로일 때 버튼 노출 (/dashboard 경로일 때 미노출) */}

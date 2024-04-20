@@ -38,9 +38,9 @@ export default function RootPage() {
 
   return (
     <div className="w-full flex flex-col items-center justify-center gap-12 pb-10">
-      <h1 className="max-w-md text-3xl font-bold text-center break-keep">
+      <h2 className="max-w-md text-3xl font-bold text-center break-keep">
         {META.DESC}
-      </h1>
+      </h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-[320px] flex flex-col gap-4"
