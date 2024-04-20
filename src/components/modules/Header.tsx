@@ -18,7 +18,7 @@ export default function Header() {
   const currentData = JSON.parse(currentStorageData as string);
 
   return (
-    <header className="border-b border-slate-200 flex items-center p-4 w-full h-[81px]">
+    <header className="sticky top-0 backdrop-blur bg-white/95 supports-backdrop-blur:bg-white/95 border-b border-slate-200 flex items-center p-4 w-full h-[81px]">
       <h1 className="text-xl font-bold px-2">
         {pathname === PATHS.ROOT ? (
           TITLES.ROOT
