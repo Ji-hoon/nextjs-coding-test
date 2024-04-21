@@ -6,7 +6,7 @@ import {
 } from "@/src/utils/handleLocalStorage";
 import { useSelector } from "react-redux";
 import { RegisterFormValues, storeProps } from "@/src/global/types";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Chart from "@/src/components/atoms/Chart";
 import { COLORS, LABELS, MESSAGES, THRESHOLD } from "@/src/global/constants";
 import { calcResultData } from "@/src/utils/handleResultData";
@@ -14,6 +14,7 @@ import { redirect } from "next/navigation";
 
 export default function DashboardContent() {
   const [isSaved, setIsSaved] = useState(false);
+  const [localData, setLocalData] = useState<RegisterFormValues[]>();
   const { isRegistered, registeredUserInfo } = useSelector(
     (state: storeProps) => state.survey
   );
@@ -24,8 +25,12 @@ export default function DashboardContent() {
     setLocalstorageWithUserInfo(registeredUserInfo);
   }
 
-  const localData = getLocalStorageData() as RegisterFormValues[];
-  if (!localData) redirect("/"); // NOTE: 저장된 데이터가 없다면 root로 리다이렉트
+  useEffect(() => {
+    const localData = getLocalStorageData();
+    if (!localData) redirect("/"); // NOTE: 저장된 데이터가 없다면 root로 리다이렉트
+
+    setLocalData(localData);
+  }, []);
 
   const results = useMemo(() => {
     const initData = {
@@ -62,26 +67,33 @@ export default function DashboardContent() {
           <div className="w-full h-px bg-gray-200 my-4"></div>
         </>
       )}
-      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        <Chart
-          title={LABELS.CHART_TOTAL}
-          data={results}
-          color={COLORS.GREEN}
-          type="SUM"
-        />
-        <Chart
-          title={LABELS.CHART_AVERAGE}
-          data={results}
-          color={COLORS.BLUE}
-          type="AVG"
-        />
-        <Chart
-          title={LABELS.CHART_STANDARD}
-          data={results}
-          color={COLORS.PINK}
-          type="SD"
-        />
-      </div>
+      {!localData && (
+        <h3 className="flex flex-auto items-center justify-center">
+          표시할 데이터가 없습니다.
+        </h3>
+      )}
+      {localData && results !== undefined && (
+        <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          <Chart
+            title={LABELS.CHART_TOTAL}
+            data={results}
+            color={COLORS.GREEN}
+            type="SUM"
+          />
+          <Chart
+            title={LABELS.CHART_AVERAGE}
+            data={results}
+            color={COLORS.BLUE}
+            type="AVG"
+          />
+          <Chart
+            title={LABELS.CHART_STANDARD}
+            data={results}
+            color={COLORS.PINK}
+            type="SD"
+          />
+        </div>
+      )}
     </>
   );
 }

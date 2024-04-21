@@ -1,9 +1,11 @@
 import { RegisterFormValues, DataPropsType } from "../global/types";
 
 export function calcResultData(
-  data: RegisterFormValues[],
+  data: RegisterFormValues[] | undefined,
   result: DataPropsType
 ) {
+  if (data === undefined) return;
+
   const teams = getTeams(data);
 
   const results = teams.map((team) => {

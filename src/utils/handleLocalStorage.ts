@@ -1,3 +1,5 @@
+"use client";
+
 import { RegisterFormValues } from "../global/types";
 
 export function setLocalstorageWithUserInfo(data: RegisterFormValues) {
@@ -13,7 +15,16 @@ export function setLocalstorageWithUserInfo(data: RegisterFormValues) {
 }
 
 export function getLocalStorageData() {
-  const currentStorageData = localStorage.getItem("surveyData");
-  const currentData = JSON.parse(currentStorageData as string);
+  let currentStorageData;
+  let currentData;
+
+  if (typeof window !== "undefined") {
+    currentStorageData = localStorage.getItem("surveyData");
+  }
+
+  if (currentStorageData) {
+    currentData = JSON.parse(currentStorageData as string);
+  }
+
   return currentData;
 }
