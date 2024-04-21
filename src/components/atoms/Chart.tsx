@@ -1,5 +1,5 @@
 import { ResponsiveBar } from "@nivo/bar";
-import CustomTooltip from "./_chart.tooltip";
+import ChartCustomTooltip from "./Chart.tooltip";
 import { DataPropsType } from "@/src/global/types";
 
 export default function Chart({
@@ -18,7 +18,7 @@ export default function Chart({
       <h3 className="text-xl font-bold py-2">{title}</h3>
       <div className="h-[320px] w-full">
         {data && (
-          <ResponsiveBar
+          <ResponsiveBar<Omit<DataPropsType, "DIFF_SUM">>
             data={data}
             keys={[type]}
             indexBy="teamName"
@@ -60,6 +60,7 @@ export default function Chart({
               from: "color",
               modifiers: [["darker", 1.6]],
             }}
+            tooltip={ChartCustomTooltip}
           />
         )}
       </div>
