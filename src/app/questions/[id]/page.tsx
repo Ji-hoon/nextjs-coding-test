@@ -4,11 +4,14 @@ import Contents from "./contents";
 
 export default async function Questions({ params }: any) {
   const response = await fetch(
-    `${process.env.BASE_URL}/api/questions/${params.id as string}`
+    `${process.env.BASE_URL}/api/questions/${params.id as string}`,
+    { next: { revalidate: 10 } }
   );
   const data = await response.json();
 
-  const lengthResponse = await fetch(`${process.env.BASE_URL}/api/questions`);
+  const lengthResponse = await fetch(`${process.env.BASE_URL}/api/questions`, {
+    next: { revalidate: 10 },
+  });
   const length = await lengthResponse.json();
 
   return (

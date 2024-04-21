@@ -111,7 +111,7 @@ export default function Contents({
               defaultValue={defaultValue?.value}
               autoFocus={true}
             />
-            <span>분</span>
+            <span>{data.unit}</span>
           </div>
         )}
       </div>

@@ -13,6 +13,7 @@ export const questions = [
       "플랭크 자세로 몇 분을 버틸 수 있나요? 1~10분 사이의 값을 입력해주세요.",
     name: "plankTime",
     ranges: [1, 10],
+    unit: "분",
   },
   {
     type: QUESTION_TYPES.TYPE_C,

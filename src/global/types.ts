@@ -33,6 +33,7 @@ export type QuestionContentType = {
   name: string;
   options?: string[];
   ranges?: number[];
+  unit?: string;
 };
 
 export type AnswerProps = {
