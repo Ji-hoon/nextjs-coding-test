@@ -6,9 +6,9 @@ import {
 } from "@/src/utils/handleLocalStorage";
 import { useSelector } from "react-redux";
 import { RegisterFormValues, storeProps } from "@/src/global/types";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Chart from "@/src/components/atoms/Chart";
-import { COLORS, LABELS, MESSAGES } from "@/src/global/constants";
+import { COLORS, LABELS, MESSAGES, THRESHOLD } from "@/src/global/constants";
 import { calcResultData } from "@/src/utils/handleResultData";
 import { redirect } from "next/navigation";
 
@@ -27,15 +27,17 @@ export default function DashboardContent() {
   const localData = getLocalStorageData() as RegisterFormValues[];
   if (!localData) redirect("/"); // NOTE: 저장된 데이터가 없다면 root로 리다이렉트
 
-  const initData = {
-    teamName: "",
-    memberCount: 0,
-    SUM: 0,
-    AVG: 0,
-    DIFF_SUM: [],
-    SD: 0,
-  };
-  const results = calcResultData(localData, initData);
+  const results = useMemo(() => {
+    const initData = {
+      teamName: "",
+      memberCount: 0,
+      SUM: 0,
+      AVG: 0,
+      DIFF_SUM: [],
+      SD: 0,
+    };
+    return calcResultData(localData, initData);
+  }, [localData]);
 
   return (
     <>
@@ -49,9 +51,9 @@ export default function DashboardContent() {
             </span>{" "}
             입니다.
             <br />
-            {registeredUserInfo.result >= 15 ? (
+            {registeredUserInfo.result >= THRESHOLD.HIGH ? (
               <>{MESSAGES.RESULT_HIGH}</>
-            ) : registeredUserInfo.result >= 10 ? (
+            ) : registeredUserInfo.result >= THRESHOLD.MIDDLE ? (
               <>{MESSAGES.RESULT_MIDDLE}</>
             ) : (
               <>{MESSAGES.RESULT_LOW}</>

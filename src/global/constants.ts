@@ -28,6 +28,9 @@ export const LABELS = {
   CHART_TOTAL: "팀 별 총합",
   CHART_AVERAGE: "팀 별 평균",
   CHART_STANDARD: "팀 별 표준 편차",
+  TOTAL: "합계",
+  AVERAGE: "평균",
+  STANDARD_DEVIATION: "표준 편차",
 };
 
 export const TITLES = {
@@ -53,4 +56,9 @@ export const COLORS = {
   GREEN: "#5fd926",
   BLUE: "#262cd9",
   PINK: "#d92677",
+};
+
+export const THRESHOLD = {
+  HIGH: 15,
+  MIDDLE: 10,
 };
