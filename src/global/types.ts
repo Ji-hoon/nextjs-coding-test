@@ -42,6 +42,7 @@ export type AnswerProps = {
 
 export type DataPropsType = {
   teamName: string;
+  memberCount: number;
   SUM?: number;
   AVG?: number;
   SD?: number;

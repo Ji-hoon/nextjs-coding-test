@@ -31,9 +31,9 @@ export const LABELS = {
 };
 
 export const TITLES = {
-  ROOT: "설문조사",
-  DASHBOARD: "설문조사 결과보기",
-  QUESTIONS: "다음 질문에 답변해주세요.",
+  ROOT: "설문조사 🎯",
+  DASHBOARD: "집계 결과 📊",
+  QUESTIONS: "다음 질문에 답변해주세요. 💬",
 };
 
 export const MESSAGES = {

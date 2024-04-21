@@ -9,11 +9,8 @@ import { RegisterFormValues, storeProps } from "@/src/global/types";
 import { useState } from "react";
 import Chart from "@/src/components/atoms/Chart";
 import { COLORS, LABELS, MESSAGES } from "@/src/global/constants";
-import {
-  calcAverageData,
-  calcStandardDeviationData,
-  calcSumData,
-} from "@/src/utils/handleResultData";
+import { calcResultData } from "@/src/utils/handleResultData";
+import { redirect } from "next/navigation";
 
 export default function DashboardContent() {
   const [isSaved, setIsSaved] = useState(false);
@@ -28,9 +25,23 @@ export default function DashboardContent() {
   }
 
   const localData = getLocalStorageData() as RegisterFormValues[];
-  const sumData = calcSumData(localData);
-  const avgData = calcAverageData(localData);
-  const stdData = calcStandardDeviationData(localData);
+  if (!localData) redirect("/"); // NOTE: 저장된 데이터가 없다면 root로 리다이렉트
+
+  const sumData = calcResultData(localData, {
+    teamName: "",
+    SUM: 0,
+    memberCount: 0,
+  });
+  const avgData = calcResultData(localData, {
+    teamName: "",
+    AVG: 0,
+    memberCount: 0,
+  });
+  const stdData = calcResultData(localData, {
+    teamName: "",
+    SD: 0,
+    memberCount: 0,
+  });
 
   return (
     <>
