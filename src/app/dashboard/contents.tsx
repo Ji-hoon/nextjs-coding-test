@@ -27,21 +27,15 @@ export default function DashboardContent() {
   const localData = getLocalStorageData() as RegisterFormValues[];
   if (!localData) redirect("/"); // NOTE: 저장된 데이터가 없다면 root로 리다이렉트
 
-  const sumData = calcResultData(localData, {
+  const initData = {
     teamName: "",
+    memberCount: 0,
     SUM: 0,
-    memberCount: 0,
-  });
-  const avgData = calcResultData(localData, {
-    teamName: "",
     AVG: 0,
-    memberCount: 0,
-  });
-  const stdData = calcResultData(localData, {
-    teamName: "",
+    DIFF_SUM: [],
     SD: 0,
-    memberCount: 0,
-  });
+  };
+  const results = calcResultData(localData, initData);
 
   return (
     <>
@@ -67,16 +61,23 @@ export default function DashboardContent() {
         </>
       )}
       <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        <Chart title={LABELS.CHART_TOTAL} data={sumData} color={COLORS.GREEN} />
+        <Chart
+          title={LABELS.CHART_TOTAL}
+          data={results}
+          color={COLORS.GREEN}
+          type="SUM"
+        />
         <Chart
           title={LABELS.CHART_AVERAGE}
-          data={avgData}
+          data={results}
           color={COLORS.BLUE}
+          type="AVG"
         />
         <Chart
           title={LABELS.CHART_STANDARD}
-          data={stdData}
+          data={results}
           color={COLORS.PINK}
+          type="SD"
         />
       </div>
     </>

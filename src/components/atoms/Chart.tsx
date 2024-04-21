@@ -6,10 +6,12 @@ export default function Chart({
   title,
   data,
   color,
+  type,
 }: {
   title: string;
-  data: DataPropsType[];
+  data: Omit<DataPropsType, "DIFF_SUM">[];
   color: string;
+  type: string;
 }) {
   return (
     <div className="flex flex-col gap-2">
@@ -18,9 +20,9 @@ export default function Chart({
         {data && (
           <ResponsiveBar
             data={data}
-            keys={["SUM", "AVG", "SD"]}
+            keys={[type]}
             indexBy="teamName"
-            margin={{ top: 20, right: 40, bottom: 40, left: 80 }}
+            margin={{ top: 20, right: 20, bottom: 24, left: 60 }}
             padding={0.35}
             valueScale={{ type: "linear" }}
             indexScale={{ type: "band", round: true }}
@@ -48,7 +50,7 @@ export default function Chart({
               tickRotation: 0,
               legend: "점수",
               legendPosition: "middle",
-              legendOffset: -48,
+              legendOffset: -36,
               truncateTickAt: 0,
             }}
             enableLabel={false}
