@@ -37,7 +37,7 @@ export default function RootPage() {
   };
 
   return (
-    <div className="w-full flex flex-col items-center justify-center gap-12 py-20">
+    <div className="w-full flex flex-col items-center justify-center gap-12 px-10 py-12">
       <h2 className="max-w-md text-3xl font-bold text-center break-keep">
         {META.DESC}
       </h2>
