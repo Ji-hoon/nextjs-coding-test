@@ -103,7 +103,7 @@ export default function Contents({
             }
           })}
         {data && data.ranges && (
-          <div className="flex items-center w-[100px] gap-2">
+          <div className="flex items-center w-[100px] gap-2 py-1">
             <Inputfield
               register={register}
               name={data?.name as RegisterFormFieldType}
