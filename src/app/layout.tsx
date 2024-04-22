@@ -24,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="flex flex-col min-h-screen overflow-x-hidden">
+      <body className="flex flex-col min-h-dvh overflow-x-hidden">
         <SurveyProvider>
           <Header />
           <div className="flex h-full flex-col flex-auto items-center justify-center">
