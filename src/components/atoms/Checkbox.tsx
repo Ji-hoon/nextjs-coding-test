@@ -29,7 +29,7 @@ export default function Checkbox({
         value={index}
         defaultChecked={matchedOption ? true : false}
       />
-      <label htmlFor={label} className="flex-auto">
+      <label htmlFor={label} className="flex-auto text-lg">
         {label}
       </label>
     </div>

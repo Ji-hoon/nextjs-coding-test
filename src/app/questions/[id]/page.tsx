@@ -15,8 +15,8 @@ export default async function Questions({ params }: any) {
   const length = await lengthResponse.json();
 
   return (
-    <div className="w-full h-full flex flex-col flex-auto px-10 py-12">
-      <h2 className="text-3xl font-semibold break-keep">
+    <div className="page-container">
+      <h2 className="heading-2">
         Q{params.id}. {data.data.title}
       </h2>
       <Contents data={data.data} length={length} page={params.id} />

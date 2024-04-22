@@ -72,11 +72,8 @@ export default function Contents({
   };
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="w-full h-full flex flex-col flex-auto"
-    >
-      <div className="flex-auto py-8 w-[320px]">
+    <form onSubmit={handleSubmit(onSubmit)} className="form-container">
+      <div className="flex-auto py-4 sm:py-8 max-w-[320px] w-full">
         {data &&
           data.options &&
           data.options.map((option, index) => {
@@ -116,7 +113,7 @@ export default function Contents({
               defaultValue={defaultValue?.value}
               autoFocus={true}
             />
-            <span>{data.unit}</span>
+            <span className="text-lg">{data.unit}</span>
           </div>
         )}
       </div>

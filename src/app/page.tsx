@@ -39,13 +39,11 @@ export default function RootPage() {
   };
 
   return (
-    <div className="w-full flex flex-col items-center justify-center gap-12 px-10 py-12">
-      <h2 className="max-w-md text-3xl font-bold text-center break-keep">
-        {META.DESC}
-      </h2>
+    <div className="page-container items-center justify-center">
+      <h2 className="heading-2 max-w-md text-center">{META.DESC}</h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="w-[320px] flex flex-col gap-4"
+        className="form-container max-w-[320px] pt-4 pb-6 flex-none"
       >
         <Inputfield
           register={register}
@@ -60,7 +58,7 @@ export default function RootPage() {
           type="text"
           placeholder={MESSAGES.PLACEHOLDER_MEMBER_NAME}
         />
-        <div className="w-full mt-8"></div>
+        <div className="w-full mt-4 sm:mt-8"></div>
         <Button
           type={TYPES.SUBMIT}
           style={TYPES.PRIMARY_STYLE}

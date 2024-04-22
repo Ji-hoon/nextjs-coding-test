@@ -15,7 +15,7 @@ export default function Chart({
 }) {
   return (
     <div className="flex flex-col gap-2">
-      <h3 className="text-xl font-bold py-2">{title}</h3>
+      <h3 className="heading-3 ">{title}</h3>
       <div className="h-[320px] w-full">
         {data && (
           <ResponsiveBar<Omit<DataPropsType, "DIFF_SUM">>

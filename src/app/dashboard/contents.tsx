@@ -48,7 +48,7 @@ export default function DashboardContent() {
     <>
       {isRegistered && (
         <>
-          <h2 className="text-3xl font-semibold break-keep">
+          <h2 className="heading-2">
             [{registeredUserInfo.teamName}팀] {registeredUserInfo.memberName}
             님의 신체점수는{" "}
             <span className="text-sky-500">
@@ -68,7 +68,7 @@ export default function DashboardContent() {
         </>
       )}
       {!localData && (
-        <h3 className="flex flex-auto items-center justify-center">
+        <h3 className="heading-3 flex flex-auto items-center justify-center">
           loading...
         </h3>
       )}

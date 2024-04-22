@@ -25,7 +25,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-10 backdrop-blur bg-white/95 supports-backdrop-blur:bg-white/95 border-b border-slate-200 flex items-center p-4 w-full h-[81px]">
-      <h3 className="text-xl font-bold px-2">
+      <h3 className="heading-3 ">
         {pathname === PATHS.ROOT ? (
           TITLES.ROOT
         ) : pathname.includes(PATHS.DASHBOARD) ? (

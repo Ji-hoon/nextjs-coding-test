@@ -23,18 +23,18 @@ export default function Button({
       {type === TYPES.LINK ? (
         <Link
           href={link || "#"}
-          className={` ${
+          className={`text-base ${
             style === TYPES.NORMAL_STYLE ? `btn-normal` : `btn-primary`
-          } w-auto`}
+          } w-auto `}
         >
           {label}
         </Link>
       ) : (
         <button
           type={type === TYPES.SUBMIT ? "submit" : undefined}
-          className={` ${
+          className={` text-base ${
             style === TYPES.NORMAL_STYLE ? `btn-normal` : `btn-primary`
-          } ${size ? `w-[${size}px]` : `w-auto`}`}
+          } ${size ? `max-w-[${size}px]` : `w-auto`}`}
         >
           {label}
         </button>
