@@ -17,7 +17,7 @@ export type FormValues = {
   memberName?: string;
   exerciseCount?: string;
   plankTime?: string;
-  exerciseType?: string;
+  exerciseType?: [boolean | undefined | string];
 };
 
 export type RegisterFormFieldType =

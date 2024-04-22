@@ -6,7 +6,6 @@ import {
   RegisterFormFieldType,
   FormValues,
   storeProps,
-  AnswerProps,
 } from "@/src/global/types";
 import { redirect, useRouter } from "next/navigation";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -29,7 +28,7 @@ export default function Contents({
   page: string;
 }) {
   // NOTE: 등록된 정보가 없다면 root로 리다이렉트
-  const { isRegistered, answers, registeredUserInfo } = useSelector(
+  const { isRegistered, answers } = useSelector(
     (state: storeProps) => state.survey
   );
   if (!isRegistered) redirect("/");
@@ -45,9 +44,15 @@ export default function Contents({
   });
 
   const onSubmit: SubmitHandler<FormValues> = (formData) => {
-    const values = Object.values(formData) as Array<string>;
+    const values = Object.values(formData);
 
-    if (values[0] === null || values[0] === "" || !values[0]) {
+    if (
+      values[0] === null ||
+      values[0] === undefined ||
+      values[0] === "" || // 배열의 값이 빈 문자열
+      !values[0] || // 배열의 값이 false
+      values[0][0] === undefined // 배열의 값이 빈 배열
+    ) {
       alert(MESSAGES.EMPTY_VALUES);
       return;
     }
