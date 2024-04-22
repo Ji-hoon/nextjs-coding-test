@@ -69,7 +69,7 @@ export default function DashboardContent() {
       )}
       {!localData && (
         <h3 className="flex flex-auto items-center justify-center">
-          표시할 데이터가 없습니다.
+          loading...
         </h3>
       )}
       {localData && results !== undefined && (

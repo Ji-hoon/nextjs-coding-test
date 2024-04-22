@@ -1,22 +1,18 @@
 "use client";
 
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { surveyActions } from "@/src/store/survey.slice";
 
 import Button from "../components/atoms/Button";
 import Inputfield from "../components/atoms/Inputfield";
 import { LABELS, MESSAGES, META, TYPES } from "../global/constants";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { FormValues, storeProps } from "../global/types";
+import { FormValues } from "../global/types";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export default function RootPage() {
-  const { isRegistered, registeredUserInfo } = useSelector(
-    (state: storeProps) => state.survey
-  );
-
-  const { register, handleSubmit } = useForm<FormValues>();
+  const { register, handleSubmit, setFocus } = useForm<FormValues>();
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -29,6 +25,12 @@ export default function RootPage() {
     if (!data.memberName || !data.teamName) {
       // TODO: data 밸리데이션 추후 공통 유틸 함수로 분리
       alert(MESSAGES.MISSING_FIELD);
+
+      if (!data.teamName) {
+        setFocus("teamName");
+        return;
+      }
+      setFocus("memberName");
       return;
     }
 
@@ -49,14 +51,14 @@ export default function RootPage() {
           register={register}
           name="teamName"
           type="text"
-          placeholder="팀 명을 입력해주세요."
+          placeholder={MESSAGES.PLACEHOLDER_TEAM_NAME}
           autoFocus={true}
         />
         <Inputfield
           register={register}
           name="memberName"
           type="text"
-          placeholder="이름을 입력해주세요."
+          placeholder={MESSAGES.PLACEHOLDER_MEMBER_NAME}
         />
         <div className="w-full mt-8"></div>
         <Button

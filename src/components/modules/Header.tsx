@@ -33,9 +33,9 @@ export default function Header() {
         ) : (
           <>
             {isRegistered && (
-              <>
+              <span className="hidden sm:inline">
                 <span className="text-sky-500">{username}</span>님,{" "}
-              </>
+              </span>
             )}
             {TITLES.QUESTIONS}
           </>

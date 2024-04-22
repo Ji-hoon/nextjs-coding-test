@@ -45,6 +45,8 @@ export const MESSAGES = {
   RESULT_HIGH: "훌륭하네요!",
   RESULT_MIDDLE: "좀 더 노력하세요!",
   RESULT_LOW: "오늘부터 건강 관리를 시작하세요!",
+  PLACEHOLDER_TEAM_NAME: "팀 명을 입력해주세요.",
+  PLACEHOLDER_MEMBER_NAME: "이름을 입력해주세요.",
 };
 
 export const META = {
