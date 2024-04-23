@@ -78,7 +78,7 @@ export default function Contents({
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form-container">
-      <div className="flex-auto py-4 sm:py-8 max-w-[320px] w-full">
+      <div className="flex-auto py-4 sm:py-6 max-w-[320px] w-full">
         {data &&
           data.options &&
           data.options.map((option, index) => {
