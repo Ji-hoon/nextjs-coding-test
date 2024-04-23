@@ -29,6 +29,7 @@ export function calcResultData(
 
     /*
      * NOTE : 표준편차 구하는 공식
+     * (참고 : https://ko.khanacademy.org/math/statistics-probability/summarizing-quantitative-data/variance-standard-deviation-population/a/calculating-standard-deviation-step-by-step )
      *
      * 1단계 - 측정하려는 그룹의 '평균'을 산출
      * 2단계 - 각 측정값과 평균값의 차이(절대값)의 '제곱'을 산출

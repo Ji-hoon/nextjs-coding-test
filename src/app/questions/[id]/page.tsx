@@ -5,12 +5,12 @@ import Contents from "./contents";
 export default async function Questions({ params }: any) {
   const response = await fetch(
     `${process.env.BASE_URL}/api/questions/${params.id as string}`,
-    { next: { revalidate: 10 } }
+    { next: { revalidate: 0 } }
   );
   const data = await response.json();
 
   const lengthResponse = await fetch(`${process.env.BASE_URL}/api/questions`, {
-    next: { revalidate: 10 },
+    next: { revalidate: 0 },
   });
   const length = await lengthResponse.json();
 

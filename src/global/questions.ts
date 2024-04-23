@@ -17,7 +17,7 @@ export const questions = [
   },
   {
     type: QUESTION_TYPES.TYPE_C,
-    title: "아래 보기 중에서 10회 이상 수행 가능한 운동 방식을 선택해주세요.",
+    title: "10회 이상 수행 가능한 운동 방식을 선택해주세요.",
     name: "exerciseType",
     options: [
       "윗몸 일으키기 (1점)",
