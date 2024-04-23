@@ -19,7 +19,7 @@ export default function Checkbox({
   );
 
   return (
-    <div className="flex gap-2 items-center py-1">
+    <div className="flex gap-2 items-center">
       <input
         {...register(name)}
         name={name}
@@ -29,7 +29,7 @@ export default function Checkbox({
         value={index}
         defaultChecked={matchedOption ? true : false}
       />
-      <label htmlFor={label} className="flex-auto text-lg">
+      <label htmlFor={label} className="flex-auto text-lg py-2 sm:py-1">
         {label}
       </label>
     </div>
