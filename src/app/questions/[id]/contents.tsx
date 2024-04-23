@@ -68,6 +68,11 @@ export default function Contents({
       router.replace(`${getPage("NEXT", parseInt(page))}`);
       return;
     }
+
+    if (!confirm(MESSAGES.CONFIRM_SURVEY)) {
+      return;
+    }
+
     router.replace("/dashboard");
   };
 

@@ -12,7 +12,7 @@ export default function Navigation_Control({
   length: number;
 }) {
   return (
-    <footer className="w-full flex items-center bg-white sticky bottom-0 pb-8 sm:pb-12 pt-4 sm:pt-6">
+    <footer className="w-full flex items-center">
       {/* /question/1이 아닐 때만 이전 버튼 노출 */}
       {page !== 1 && (
         <Button

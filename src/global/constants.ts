@@ -41,6 +41,7 @@ export const TITLES = {
 
 export const MESSAGES = {
   MISSING_FIELD: "필드를 모두 입력해주세요.",
+  CONFIRM_SURVEY: "입력하신 내용으로 설문을 제출합니다.",
   EMPTY_VALUES: "옵션을 선택 또는 입력해주세요.",
   RESULT_HIGH: "훌륭하네요!",
   RESULT_MIDDLE: "좀 더 노력하세요!",
